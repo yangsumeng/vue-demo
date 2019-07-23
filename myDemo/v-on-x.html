@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>index</title>
+  </head>
+  <body>
+    <div id="app">
+      <input type="button" v-on:click="addList($event)" value="添加"/>
+      <input type="button" v-on:click.once="addList($event)" value="添加-一次"/>
+      <input type="button" v-on:click.stop="addList($event)" value="停止"/>
+      <a v-on:click.stop="addList">停止</a>
+      <!-- 只有在 `key` 是 `Enter` 时调用 `vm.submit()` -->
+      <input v-on:keyup.enter="addList('A',$event)" value="Enter增加">
+      <template v-for="i in list">{{i}}----</template>
+    </div>
+  </body>
+</html>
+<script>
+  var app = new Vue({
+    el: '#app',
+    data: {
+      list : [1,2,3,4,5,6,7,8,9,10],
+    },
+    computed: {
+    },
+    methods:{
+      addList(msg,event){
+        if (msg == 'A'){
+          this.list.push(event.currentTarget.value);
+        } else {
+          this.list.push(this.list.length+1);
+        }
+      },
+    }
+  })
+</script>

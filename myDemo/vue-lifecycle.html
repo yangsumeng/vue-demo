@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>index</title>
+</head>
+<body>
+<div id="app">
+  <input type="text" v-model="a" />
+  {{a}}
+  <ol>
+    <li v-for="cycle in cyclelist">
+        {{cycle}}
+    </li>
+  </ol>
+  <input type="button" value="destroyed"  onclick="doDestroyed()"/>
+</div>
+</body>
+</html>
+<script>
+  var app = new Vue({
+    el:"#app",
+    // data:{a:1,
+    //   cyclelist:['开始']
+    // },
+    data(){
+      return {
+        a:1,
+        cyclelist:['开始']
+      }
+    },
+    beforeCreate(){
+      // alert('beforeCreate');
+      //this.cyclelist.push('beforeCreate');  // this.cyclelist undifined 还未初始化
+    },
+    created(){
+      // alert('created');
+      this.cyclelist.push('created');
+    },
+    beforeMount(){
+      this.cyclelist.push('beforeMount');
+    },
+    mounted(){
+      this.cyclelist.push('mounted');
+    },
+    beforeUpdate(){
+      this.cyclelist.push('beforeUpdate');
+    },
+    updated(){
+      //this.cyclelist.push('updated');   //死循环
+    },
+    destroyed(){
+      this.cyclelist.push('destroyed');
+      alert("destroyed");
+    }
+  })
+  function doDestroyed(){
+    app.$destroy(true);
+  }
+  // app.destroyed();
+</script>

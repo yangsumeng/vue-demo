@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>index</title>
+  </head>
+  <body>
+    <div id="app">
+      <my-component class="aaaa"></my-component>
+      <div>
+        <div :class="myClass" @click="changeClass">class 展示 计算 </div>
+      </div>
+    </div>
+    <!-- built files will be auto injected -->
+  </body>
+</html>
+<script>
+  Vue.component('my-component',{
+      template:'<p class="foo bar">Hi</p>',
+    }
+  );
+  var app = new Vue({
+    el: '#app',
+    data: {
+      classBoolean:true,
+    },
+    computed:{
+      myClass:function () {
+        return this.classBoolean?'myClass':'';
+      },
+    },
+    methods:{
+      changeClass(){
+        this.classBoolean = !this.classBoolean;
+      },
+    }
+  })
+</script>
+<style lang="less" scoped>
+.myClass{
+  background-color: #47cb89;
+  color: #412318;
+}
+</style>

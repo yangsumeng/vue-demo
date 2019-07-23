@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>index</title>
+  </head>
+  <body>
+    <div id="app">
+      <ol v-for="i in list">
+        <li v-if="i % 2 == 0" style="color: #18b566">{{i}}</li>
+        <li v-if="i % 2 == 1" style="color:red">{{i}}</li>
+      </ol>
+
+      <ol v-for="(name,value,index) in list">
+        {{name}}-------{{value}}-----{{index}}
+      </ol>
+    </div>
+  </body>
+</html>
+<script>
+  var app = new Vue({
+    el: '#app',
+    data: {
+      list : [1,2,3,4,5,6,7,8,9,10],
+    },
+    computed: {
+    },
+    methods:{
+    }
+  })
+</script>

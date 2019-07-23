@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>index</title>
+  </head>
+  <body>
+    <div id="app">
+      <div>
+        <ol>
+          <li v-for="i in list" >
+            <span :style="i%2==0?myStyle:'color:blue'">---{{i}}style 绑定的是js对象支持数组[]</span>
+          </li>
+        </ol>
+        <div :class="myClass" @click="changeClass">class 展示 计算 </div>
+
+        <div :class="this.classBoolean2? 'myClass':'myClass2'" @click="changeClass2">class 展示 计算2 </div>
+      </div>
+    </div>
+    <!-- built files will be auto injected -->
+  </body>
+</html>
+<script>
+  var app = new Vue({
+    el: '#app',
+    data: {
+      classBoolean:true,
+      classBoolean2:true,
+      color:'red',
+      list:[1,2,3,4,5,6,7,8,9]
+    },
+    computed:{
+      myStyle:function () {
+        return {color:'red'};
+      },
+      myClass:function () {
+        return this.classBoolean ? 'myClass':'myClass2';
+      }
+    },
+    methods:{
+      changeClass(){
+        this.classBoolean = !this.classBoolean;
+      },
+      changeClass2(){
+        this.classBoolean2 = !this.classBoolean2;
+      }
+    }
+  })
+</script>
+<style lang="less" scoped>
+.myClass{
+  background-color: #47cb89;
+  color: #412318;
+}
+.myClass2{
+  background-color: red;
+  color: blue;
+}
+</style>

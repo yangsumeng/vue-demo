@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>index</title>
+</head>
+<body>
+<div id="app">
+  <input type="text" v-model="a" />
+  <HR>
+  {{a}}
+  <HR>
+  {{b}}
+</div>
+<input type="button" onclick="changeData()" value="点击修改data" />
+<!-- built files will be auto injected -->
+</body>
+</html>
+<script>
+  // var data = {a : 1,b:1};
+  //Object.freeze(data);
+  var app = new Vue({
+    el:"#app",
+    data:{
+      a:1,
+      b:1,
+    },
+    // watch: {
+    //   'a':(newValue,oldvalue) =>{
+    //       alert(newValue);
+    //       alert(oldvalue);
+    //   }
+    // }
+  })
+
+  app.$watch('a',(newValue,oldvalue) =>{
+    alert(newValue);
+    alert(oldvalue);
+  });
+  // app.$el = "#app";
+  // app.$data = {data:{a:1,b:1}};
+  function changeData(){
+    // alert(app.$data);
+    // var dd = app.$data;
+    // app.$data.b = 2;
+    // app.$data.data.b = 2;
+    // app.$watch()
+  }
+
+
+</script>
+

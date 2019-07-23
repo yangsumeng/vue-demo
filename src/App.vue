@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div id="appinner">
     <!--<img src="./assets/logo.png">-->
     <router-view/>
   </div>
@@ -7,7 +7,7 @@
 
 <script>
 export default {
-  name: 'app'
+  name: 'appinner'
 }
 </script>
 
@@ -26,7 +26,7 @@ a{
   text-align: center;
   color: #2c3e50;
 }
-html, body, #app{
+html, body, #appinner{
   width: 100%;
   height: 100%;
 }

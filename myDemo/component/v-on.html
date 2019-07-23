@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>index</title>
+  </head>
+  <body>
+    <div id="app">
+      <blog-post
+        v-for="post in posts"
+        v-bind:key="post.id"
+        v-bind:post="post"
+        v-on:my-change="myChange"
+      ></blog-post>
+    </div>
+  </body>
+</html>
+<script>
+  Vue.component('blog-post', {
+    props: ['post'],
+    template: `
+    <div class="blog-post">
+      <h3>{{ post.title }}</h3>
+      <button v-on:click="$emit('my-change',post)">
+        Enlarge text
+      </button>
+      <div v-html="post.content" ></div>
+    </div>
+  `
+  })
+
+  var app = new Vue({
+    el: '#app',
+    data: {
+      posts: [{id:1,title:'A',content:'AAAAAAAAAAAAA'},{id:2,title:'D',content:'DDDDDDDDDDD'},{id:3,title:'C',content:'CCCCCCCCCCCC'}],
+      postFontSize: 1
+    },
+    computed: {
+    },
+    methods:{
+      myChange(post){
+        post.content += "add something";
+      }
+    }
+  })
+</script>

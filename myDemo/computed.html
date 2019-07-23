@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>index</title>
+  </head>
+  <body>
+    <div id="app">
+      {{reversedMessage1}}
+      <br/>
+      {{reversedMessage()}}
+      <br/>
+      <input type="text" v-model="message" />
+      <br>
+
+      <br>
+      填写名称：
+      <input type="text" v-model="fullName" />
+      <br>
+      填写firstName
+      <input type="text" v-model="firstName" />
+      <br>
+      firstName:{{firstName}} | lastName:{{lastName}} fullName:{{fullName}}
+    </div>
+    <!-- built files will be auto injected -->
+  </body>
+</html>
+<script>
+  var app = new Vue({
+    el: '#app',
+    data: {
+      message: 'Hello Vue!',
+      firstName :'',
+      lastName:'',
+    },
+    computed:{
+      fullName:{
+        get:function(){
+          return this.firstName + ' ' + this.lastName;
+        },
+        set:function (val){
+          var names = val.split(' ');
+          this.firstName = names[0];
+          this.lastName = names[1];
+        }
+      },
+      reversedMessage1:function () {
+        return this.message.split('').reverse().join('');
+      }
+    },
+    methods:{
+      reversedMessage:function () {
+        return this.message.split('').reverse().join('') + 'XX';
+      }
+    }
+  })
+</script>

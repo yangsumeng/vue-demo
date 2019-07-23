@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>index</title>
+  </head>
+  <body>
+    <div id="app">
+      <input type="text" v-model="value1" /> {{value1}}
+      <br/>
+      change时触发
+      <input type="text" v-model.lazy="value11" /> {{value11}}
+      <br/>
+      只能输入数字
+      <input type="number" v-model="value18" /> {{value18}}
+      <br/>
+      <textarea  v-model="value2" ></textarea>{{value2}}
+      <br/>
+      <input type="checkbox" id="checkbox" v-model="value3">
+      <label for="checkbox">{{ value3}}</label>
+      <br/>
+      <input type="checkbox" v-model="value4" true-value="yes" false-value="no">
+       {{ value4 }}
+      <div id="example-6">
+        <select v-model="value5" multiple style="width: 50px;">
+          <option>A</option>
+          <option>B</option>
+          <option>C</option>
+        </select>
+        <br>
+        <span>Selected: {{ value5 }}</span>
+      </div>
+      <br/>
+    </div>
+
+  </body>
+</html>
+<script>
+  var app = new Vue({
+    el: '#app',
+    data: {
+      value1 : '',
+      value2 : '',
+      value3 : '',
+      value4 : '',
+      value5 : [],
+      value6 : [],
+      value7 : [],
+      value11 : [],
+
+    },
+  })
+</script>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>index</title>
+  </head>
+  <body>
+    <div id="app">
+      <br>
+      firstName：
+      <input type="text" v-model="firstName" />
+      <br>
+      lastName
+      <input type="text" v-model="lastName" />
+      <br>
+      firstName:{{firstName}} | lastName:{{lastName}} fullName:{{fullName}}
+    </div>
+    <!-- built files will be auto injected -->
+  </body>
+</html>
+<script>
+  var app = new Vue({
+    el: '#app',
+    data: {
+      message: 'Hello Vue!',
+      firstName :'',
+      lastName:'',
+      fullName:'',
+    },
+    watch:{
+      firstName:function(){
+        this.fullName = this.firstName + ' ' + this.lastName;
+      },
+      lastName:function(){
+        this.fullName = this.firstName + ' ' + this.lastName;
+      }
+    },
+    computed:{
+    },
+    methods:{
+      reversedMessage:function () {
+        return this.message.split('').reverse().join('') + 'XX';
+      }
+    }
+  })
+</script>

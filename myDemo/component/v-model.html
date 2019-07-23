@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>index</title>
+  </head>
+  <body>
+    <div id="app">
+      <my-input v-model="myValue"></my-input>
+      myValue:{{myValue}}
+    </div>
+  </body>
+</html>
+<script>
+  Vue.component('my-input', {
+    props: ['value'],
+    template: `
+<div>
+<input v-bind:value="value" type="text" v-on:input="$emit('input', $event.target.value)" />
+component:{{value}}
+</div>
+  `
+  })
+
+  var app = new Vue({
+    el: '#app',
+    data: {
+      myValue: 123,
+    },
+    computed: {
+    },
+  })
+</script>
