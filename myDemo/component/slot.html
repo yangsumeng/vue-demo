@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>index</title>
+  </head>
+  <body>
+  <div id="app">
+    <child-component :level="1">parent 1</child-component>
+    <child-component :level="2">parent 2</child-component>
+    <child-component :level="3"></child-component>
+  </div>
+  </body>
+</html>
+<script>
+  Vue.component('child-component', {
+    props: ['level'],
+    template: `
+  <h1 v-if="level === 1">
+    <slot>1111</slot>
+  </h1>
+  <h2 v-else-if="level === 2">
+    <slot>2222</slot>
+  </h2>
+  <h3 v-else>
+    <slot>sort是展示父组件传递过来的信息-默认值</slot>
+  </h3>
+    `
+  })
+
+  var app = new Vue({
+    el: '#app',
+    data: {
+      posts: [{id:1,title:'A',content:'AAAAAAAAAAAAA'},{id:2,title:'D',content:'DDDDDDDDDDD'},{id:3,title:'C',content:'CCCCCCCCCCCC'}],
+      postFontSize: 1
+    },
+    computed: {
+    },
+    methods:{
+    }
+  })
+</script>

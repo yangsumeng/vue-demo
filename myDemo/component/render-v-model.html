@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>index</title>
+  </head>
+  <body>
+  <div id="app">
+    <my-input v-model="myValue"></my-input>{{myValue}}
+
+    <my-input :value="myValue2" @input="setValue"></my-input>
+    {{myValue2}}
+  </div>
+  </body>
+</html>
+<script>
+  Vue.component('my-input', {
+    props: ['value'],
+    render:function(createElement){
+      let self = this;
+      return createElement(
+        'input',{
+          domProps: {
+            value: self.value
+          },
+          on: {
+            input: function (event) {
+              self.$emit('input', event.target.value)
+            }
+          }
+        }
+      );
+    }
+  })
+
+  var app = new Vue({
+    el: '#app',
+    data: {
+      myValue: '',
+      myValue2: 1
+    },
+    computed: {
+    },
+    methods:{
+      setValue(newValue){
+        this.myValue2 = newValue;
+      }
+    }
+  })
+</script>
