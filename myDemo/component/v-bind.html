@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>index</title>
+  </head>
+  <body>
+    <div id="app">
+      <ol>
+        <todo v-bind:todo="todo"></todo>
+        <HR/>
+        <todo2 v-bind="todo"></todo2>
+      </ol>
+    </div>
+  </body>
+</html>
+<script>
+  Vue.component('todo',{
+    props:['todo'],
+    template:'<li>{{todo.id}}.{{ todo.text }}</li>'
+  });
+
+  Vue.component('todo2',{
+    props:['id','text'],
+    template:'<li>{{id}}.{{text }}</li>'
+  });
+
+  var app = new Vue({
+    el: '#app',
+    data: {
+      todo:{id:1,text:'测试v-bind'},
+    },
+    computed: {
+    },
+    methods:{
+    }
+  })
+</script>
