@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>index</title>
+  </head>
+  <body>
+    <div id="app">
+      <my-component ref="myComponent" ></my-component>
+    </div>
+  </body>
+</html>
+<script>
+  Vue.component('my-component',{
+    data:function(){
+      return{
+        myValue : 1111,
+      }
+    },
+    template:`<li></li>`,
+    methods:{
+      myFunction:function(){
+        return this.myValue;
+      }
+    }
+  });
+  var app = new Vue({
+    el: '#app',
+    data: {
+      myValue : 1100,
+    },
+    computed: {
+    },
+    methods:{
+      myFunction:function(){
+        return "AAAAAAAAAAAAAAAA";
+      }
+    }
+  })
+
+  alert(app.myFunction());
+</script>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>index</title>
+  </head>
+  <body>
+    <div id="app">
+      <keep-alive>
+        <component v-bind:is="componentName"></component>
+      </keep-alive>
+
+      <input type="button" value="切换组件" @click="changeComponent"/>
+    </div>
+  </body>
+</html>
+<script>
+  Vue.component('alert-box', {
+    template: `
+    <div class="demo-alert-box">
+      <strong>切换前!</strong>
+      <slot></slot>
+    </div>
+  `
+  })
+
+  Vue.component('alert-box1', {
+    data:function(){
+      return {
+        myValue:'',
+      }
+    },
+    template: `
+    <div>
+      <input type="text" v-model="myValue" />
+      <strong>11111111111111111切换后!</strong>
+      <slot></slot>
+    </div>
+  `
+  })
+
+  var app = new Vue({
+    el: '#app',
+    data: {
+      componentName: 'alert-box1',
+    },
+    computed: {
+    },
+    methods:{
+      changeComponent(){
+        this.componentName = this.componentName=='alert-box1'? 'alert-box':'alert-box1';
+      }
+    }
+  })
+</script>
